@@ -1,0 +1,85 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="personalData">
+            <h2><span jhiTranslate="employeesocialstatusApp.personalData.detail.title">Personal Data</span> {{personalData.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="employeesocialstatusApp.personalData.fullName">Full Name</span></dt>
+                <dd>
+                    <span>{{personalData.fullName}}</span>
+                </dd>
+                <dt><span jhiTranslate="employeesocialstatusApp.personalData.oracleNumber">Oracle Number</span></dt>
+                <dd>
+                    <span>{{personalData.oracleNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="employeesocialstatusApp.personalData.jobFunction">Job Function</span></dt>
+                <dd>
+                    <span>{{personalData.jobFunction}}</span>
+                </dd>
+                <dt><span jhiTranslate="employeesocialstatusApp.personalData.appointmentDate">Appointment Date</span></dt>
+                <dd>
+                    <span>{{personalData.appointmentDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="employeesocialstatusApp.personalData.schoolAdministration">School Administration</span></dt>
+                <dd>
+                    <span>{{personalData.schoolAdministration}}</span>
+                </dd>
+                <dt><span jhiTranslate="employeesocialstatusApp.personalData.gender">Gender</span></dt>
+                <dd>
+                    <span>{{personalData.gender}}</span>
+                </dd>
+                <dt><span jhiTranslate="employeesocialstatusApp.personalData.sector">Sector</span></dt>
+                <dd>
+                    <span>{{personalData.sector}}</span>
+                </dd>
+                <dt><span jhiTranslate="employeesocialstatusApp.personalData.socialStatus">Social Status</span></dt>
+                <dd>
+                    <span>{{personalData.socialStatus}}</span>
+                </dd>
+                <dt><span jhiTranslate="employeesocialstatusApp.personalData.nationality">Nationality</span></dt>
+                <dd>
+                    <span>{{personalData.nationality}}</span>
+                </dd>
+                <dt><span jhiTranslate="employeesocialstatusApp.personalData.contactNumber">Contact Number</span></dt>
+                <dd>
+                    <span>{{personalData.contactNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="employeesocialstatusApp.personalData.createdAt">Created At</span></dt>
+                <dd>
+                    <span>{{personalData.createdAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="employeesocialstatusApp.personalData.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{personalData.createdBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="employeesocialstatusApp.personalData.modifiedAt">Modified At</span></dt>
+                <dd>
+                    <span>{{personalData.modifiedAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="employeesocialstatusApp.personalData.modifiedBy">Modified By</span></dt>
+                <dd>
+                    <span>{{personalData.modifiedBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="employeesocialstatusApp.personalData.attachmentInfo">Attachment Info</span></dt>
+                <dd>
+                    <div *ngIf="personalData.attachmentInfoId">
+                        <a [routerLink]="['/attachment-info-ess', personalData.attachmentInfoId, 'view']">{{personalData.attachmentInfoId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/personal-data-ess', personalData.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

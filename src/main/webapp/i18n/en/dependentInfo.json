@@ -1,0 +1,29 @@
+{
+    "employeesocialstatusApp": {
+        "dependentInfo": {
+            "home": {
+                "title": "Dependent Infos",
+                "createLabel": "Create a new Dependent Info",
+                "createOrEditLabel": "Create or edit a Dependent Info"
+            },
+            "created": "A new Dependent Info is created with identifier {{ param }}",
+            "updated": "A Dependent Info is updated with identifier {{ param }}",
+            "deleted": "A Dependent Info is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Dependent Info {{ id }}?"
+            },
+            "detail": {
+                "title": "Dependent Info"
+            },
+            "name": "Name",
+            "marriageDate": "Marriage Date",
+            "workingStatus": "Working Status",
+            "employer": "Employer",
+            "employerType": "Employer Type",
+            "hireDate": "Hire Date",
+            "houseAllowanceProvided": "House Allowance Provided",
+            "governmentHousing": "Government Housing",
+            "personalData": "Personal Data"
+        }
+    }
+}

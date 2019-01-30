@@ -1,0 +1,35 @@
+{
+    "employeesocialstatusApp": {
+        "personalData": {
+            "home": {
+                "title": "Personal Data",
+                "createLabel": "Create a new Personal Data",
+                "createOrEditLabel": "Create or edit a Personal Data"
+            },
+            "created": "A new Personal Data is created with identifier {{ param }}",
+            "updated": "A Personal Data is updated with identifier {{ param }}",
+            "deleted": "A Personal Data is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Personal Data {{ id }}?"
+            },
+            "detail": {
+                "title": "Personal Data"
+            },
+            "fullName": "Full Name",
+            "oracleNumber": "Oracle Number",
+            "jobFunction": "Job Function",
+            "appointmentDate": "Appointment Date",
+            "schoolAdministration": "School Administration",
+            "gender": "Gender",
+            "sector": "Sector",
+            "socialStatus": "Social Status",
+            "nationality": "Nationality",
+            "contactNumber": "Contact Number",
+            "createdAt": "Created At",
+            "createdBy": "Created By",
+            "modifiedAt": "Modified At",
+            "modifiedBy": "Modified By",
+            "attachmentInfo": "Attachment Info"
+        }
+    }
+}

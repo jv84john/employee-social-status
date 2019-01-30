@@ -1,0 +1,87 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-dependent-info-ess-heading" jhiTranslate="employeesocialstatusApp.dependentInfo.home.createOrEditLabel">Create or edit a Dependent Info</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!dependentInfo.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="dependentInfo.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="employeesocialstatusApp.dependentInfo.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="dependentInfo.name" required/>
+                    <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="employeesocialstatusApp.dependentInfo.marriageDate" for="field_marriageDate">Marriage Date</label>
+                    <div class="input-group">
+                        <input id="field_marriageDate" type="text" class="form-control" name="marriageDate" ngbDatepicker  #marriageDateDp="ngbDatepicker" [(ngModel)]="dependentInfo.marriageDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="marriageDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="employeesocialstatusApp.dependentInfo.workingStatus" for="field_workingStatus">Working Status</label>
+                    <input type="text" class="form-control" name="workingStatus" id="field_workingStatus"
+                        [(ngModel)]="dependentInfo.workingStatus" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="employeesocialstatusApp.dependentInfo.employer" for="field_employer">Employer</label>
+                    <input type="text" class="form-control" name="employer" id="field_employer"
+                        [(ngModel)]="dependentInfo.employer" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="employeesocialstatusApp.dependentInfo.employerType" for="field_employerType">Employer Type</label>
+                    <input type="text" class="form-control" name="employerType" id="field_employerType"
+                        [(ngModel)]="dependentInfo.employerType" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="employeesocialstatusApp.dependentInfo.hireDate" for="field_hireDate">Hire Date</label>
+                    <div class="input-group">
+                        <input id="field_hireDate" type="text" class="form-control" name="hireDate" ngbDatepicker  #hireDateDp="ngbDatepicker" [(ngModel)]="dependentInfo.hireDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="hireDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="employeesocialstatusApp.dependentInfo.houseAllowanceProvided" for="field_houseAllowanceProvided">House Allowance Provided</label>
+                    <input type="text" class="form-control" name="houseAllowanceProvided" id="field_houseAllowanceProvided"
+                        [(ngModel)]="dependentInfo.houseAllowanceProvided" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="employeesocialstatusApp.dependentInfo.governmentHousing" for="field_governmentHousing">Government Housing</label>
+                    <input type="text" class="form-control" name="governmentHousing" id="field_governmentHousing"
+                        [(ngModel)]="dependentInfo.governmentHousing" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="employeesocialstatusApp.dependentInfo.personalData" for="field_personalData">Personal Data</label>
+                    <select class="form-control" id="field_personalData" name="personalData" [(ngModel)]="dependentInfo.personalDataId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="personalDataOption.id" *ngFor="let personalDataOption of personaldata; trackBy: trackPersonalDataById">{{personalDataOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

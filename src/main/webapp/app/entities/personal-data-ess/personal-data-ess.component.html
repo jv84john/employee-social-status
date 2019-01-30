@@ -1,0 +1,94 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="employeesocialstatusApp.personalData.home.title">Personal Data</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-personal-data-ess" [routerLink]="['/personal-data-ess/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="employeesocialstatusApp.personalData.home.createLabel">
+            Create new Personal Data
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="personalData">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="fullName"><span jhiTranslate="employeesocialstatusApp.personalData.fullName">Full Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="oracleNumber"><span jhiTranslate="employeesocialstatusApp.personalData.oracleNumber">Oracle Number</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="jobFunction"><span jhiTranslate="employeesocialstatusApp.personalData.jobFunction">Job Function</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="appointmentDate"><span jhiTranslate="employeesocialstatusApp.personalData.appointmentDate">Appointment Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="schoolAdministration"><span jhiTranslate="employeesocialstatusApp.personalData.schoolAdministration">School Administration</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="gender"><span jhiTranslate="employeesocialstatusApp.personalData.gender">Gender</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="sector"><span jhiTranslate="employeesocialstatusApp.personalData.sector">Sector</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="socialStatus"><span jhiTranslate="employeesocialstatusApp.personalData.socialStatus">Social Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="nationality"><span jhiTranslate="employeesocialstatusApp.personalData.nationality">Nationality</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="contactNumber"><span jhiTranslate="employeesocialstatusApp.personalData.contactNumber">Contact Number</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="createdAt"><span jhiTranslate="employeesocialstatusApp.personalData.createdAt">Created At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="createdBy"><span jhiTranslate="employeesocialstatusApp.personalData.createdBy">Created By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="modifiedAt"><span jhiTranslate="employeesocialstatusApp.personalData.modifiedAt">Modified At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="modifiedBy"><span jhiTranslate="employeesocialstatusApp.personalData.modifiedBy">Modified By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="attachmentInfoId"><span jhiTranslate="employeesocialstatusApp.personalData.attachmentInfo">Attachment Info</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let personalData of personalData ;trackBy: trackId">
+                <td><a [routerLink]="['/personal-data-ess', personalData.id, 'view' ]">{{personalData.id}}</a></td>
+                <td>{{personalData.fullName}}</td>
+                <td>{{personalData.oracleNumber}}</td>
+                <td>{{personalData.jobFunction}}</td>
+                <td>{{personalData.appointmentDate | date:'mediumDate'}}</td>
+                <td>{{personalData.schoolAdministration}}</td>
+                <td>{{personalData.gender}}</td>
+                <td>{{personalData.sector}}</td>
+                <td>{{personalData.socialStatus}}</td>
+                <td>{{personalData.nationality}}</td>
+                <td>{{personalData.contactNumber}}</td>
+                <td>{{personalData.createdAt | date:'medium'}}</td>
+                <td>{{personalData.createdBy}}</td>
+                <td>{{personalData.modifiedAt | date:'medium'}}</td>
+                <td>{{personalData.modifiedBy}}</td>
+                <td>
+                    <div *ngIf="personalData.attachmentInfoId">
+                        <a [routerLink]="['../attachment-info-ess', personalData.attachmentInfoId , 'view' ]" >{{personalData.attachmentInfoId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/personal-data-ess', personalData.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/personal-data-ess', personalData.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'personal-data-ess', { outlets: { popup: personalData.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="personalData && personalData.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>
