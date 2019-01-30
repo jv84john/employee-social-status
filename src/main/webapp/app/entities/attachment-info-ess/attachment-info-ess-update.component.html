@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-attachment-info-ess-heading" jhiTranslate="employeesocialstatusApp.attachmentInfo.home.createOrEditLabel">Create or edit a Attachment Info</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!attachmentInfo.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="attachmentInfo.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="employeesocialstatusApp.attachmentInfo.marriageCert" for="field_marriageCert">Marriage Cert</label>
+                    <input type="text" class="form-control" name="marriageCert" id="field_marriageCert"
+                        [(ngModel)]="attachmentInfo.marriageCert" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="employeesocialstatusApp.attachmentInfo.salaryCert" for="field_salaryCert">Salary Cert</label>
+                    <input type="text" class="form-control" name="salaryCert" id="field_salaryCert"
+                        [(ngModel)]="attachmentInfo.salaryCert" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="employeesocialstatusApp.attachmentInfo.deathCert" for="field_deathCert">Death Cert</label>
+                    <input type="text" class="form-control" name="deathCert" id="field_deathCert"
+                        [(ngModel)]="attachmentInfo.deathCert" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="employeesocialstatusApp.attachmentInfo.divorceDoc" for="field_divorceDoc">Divorce Doc</label>
+                    <input type="text" class="form-control" name="divorceDoc" id="field_divorceDoc"
+                        [(ngModel)]="attachmentInfo.divorceDoc" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="employeesocialstatusApp.attachmentInfo.synopsis" for="field_synopsis">Synopsis</label>
+                    <input type="text" class="form-control" name="synopsis" id="field_synopsis"
+                        [(ngModel)]="attachmentInfo.synopsis" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

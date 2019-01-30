@@ -1,0 +1,59 @@
+{
+    "name": "DependentInfo",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "marriageDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "workingStatus",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "employer",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "employerType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "hireDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "houseAllowanceProvided",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "governmentHousing",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "personalData",
+            "otherEntityName": "personalData",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "dependentInfo"
+        }
+    ],
+    "changelogDate": "20190130102717",
+    "entityTableName": "dependent_info",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "ess"
+}

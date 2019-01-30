@@ -1,0 +1,82 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="employeesocialstatusApp.dependentInfo.home.title">Dependent Infos</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-dependent-info-ess" [routerLink]="['/dependent-info-ess/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="employeesocialstatusApp.dependentInfo.home.createLabel">
+            Create new Dependent Info
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="dependentInfos">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="name"><span jhiTranslate="employeesocialstatusApp.dependentInfo.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="marriageDate"><span jhiTranslate="employeesocialstatusApp.dependentInfo.marriageDate">Marriage Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="workingStatus"><span jhiTranslate="employeesocialstatusApp.dependentInfo.workingStatus">Working Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="employer"><span jhiTranslate="employeesocialstatusApp.dependentInfo.employer">Employer</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="employerType"><span jhiTranslate="employeesocialstatusApp.dependentInfo.employerType">Employer Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="hireDate"><span jhiTranslate="employeesocialstatusApp.dependentInfo.hireDate">Hire Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="houseAllowanceProvided"><span jhiTranslate="employeesocialstatusApp.dependentInfo.houseAllowanceProvided">House Allowance Provided</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="governmentHousing"><span jhiTranslate="employeesocialstatusApp.dependentInfo.governmentHousing">Government Housing</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="personalDataId"><span jhiTranslate="employeesocialstatusApp.dependentInfo.personalData">Personal Data</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let dependentInfo of dependentInfos ;trackBy: trackId">
+                <td><a [routerLink]="['/dependent-info-ess', dependentInfo.id, 'view' ]">{{dependentInfo.id}}</a></td>
+                <td>{{dependentInfo.name}}</td>
+                <td>{{dependentInfo.marriageDate | date:'mediumDate'}}</td>
+                <td>{{dependentInfo.workingStatus}}</td>
+                <td>{{dependentInfo.employer}}</td>
+                <td>{{dependentInfo.employerType}}</td>
+                <td>{{dependentInfo.hireDate | date:'mediumDate'}}</td>
+                <td>{{dependentInfo.houseAllowanceProvided}}</td>
+                <td>{{dependentInfo.governmentHousing}}</td>
+                <td>
+                    <div *ngIf="dependentInfo.personalDataId">
+                        <a [routerLink]="['../personal-data-ess', dependentInfo.personalDataId , 'view' ]" >{{dependentInfo.personalDataId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/dependent-info-ess', dependentInfo.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/dependent-info-ess', dependentInfo.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'dependent-info-ess', { outlets: { popup: dependentInfo.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="dependentInfos && dependentInfos.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="employeesocialstatusApp.attachmentInfo.home.title">Attachment Infos</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-attachment-info-ess" [routerLink]="['/attachment-info-ess/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="employeesocialstatusApp.attachmentInfo.home.createLabel">
+            Create new Attachment Info
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="attachmentInfos">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="marriageCert"><span jhiTranslate="employeesocialstatusApp.attachmentInfo.marriageCert">Marriage Cert</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="salaryCert"><span jhiTranslate="employeesocialstatusApp.attachmentInfo.salaryCert">Salary Cert</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="deathCert"><span jhiTranslate="employeesocialstatusApp.attachmentInfo.deathCert">Death Cert</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="divorceDoc"><span jhiTranslate="employeesocialstatusApp.attachmentInfo.divorceDoc">Divorce Doc</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="synopsis"><span jhiTranslate="employeesocialstatusApp.attachmentInfo.synopsis">Synopsis</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let attachmentInfo of attachmentInfos ;trackBy: trackId">
+                <td><a [routerLink]="['/attachment-info-ess', attachmentInfo.id, 'view' ]">{{attachmentInfo.id}}</a></td>
+                <td>{{attachmentInfo.marriageCert}}</td>
+                <td>{{attachmentInfo.salaryCert}}</td>
+                <td>{{attachmentInfo.deathCert}}</td>
+                <td>{{attachmentInfo.divorceDoc}}</td>
+                <td>{{attachmentInfo.synopsis}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/attachment-info-ess', attachmentInfo.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/attachment-info-ess', attachmentInfo.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'attachment-info-ess', { outlets: { popup: attachmentInfo.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="attachmentInfos && attachmentInfos.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

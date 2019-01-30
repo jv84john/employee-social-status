@@ -1,0 +1,36 @@
+{
+    "name": "AttachmentInfo",
+    "fields": [
+        {
+            "fieldName": "marriageCert",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "salaryCert",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "deathCert",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "divorceDoc",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "synopsis",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190130102718",
+    "entityTableName": "attachment_info",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "ess"
+}

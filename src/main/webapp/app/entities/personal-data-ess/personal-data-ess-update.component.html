@@ -1,0 +1,128 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-personal-data-ess-heading" jhiTranslate="employeesocialstatusApp.personalData.home.createOrEditLabel">Create or edit a Personal Data</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!personalData.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="personalData.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="employeesocialstatusApp.personalData.fullName" for="field_fullName">Full Name</label>
+                    <input type="text" class="form-control" name="fullName" id="field_fullName"
+                        [(ngModel)]="personalData.fullName" required/>
+                    <div [hidden]="!(editForm.controls.fullName?.dirty && editForm.controls.fullName?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.fullName?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="employeesocialstatusApp.personalData.oracleNumber" for="field_oracleNumber">Oracle Number</label>
+                    <input type="text" class="form-control" name="oracleNumber" id="field_oracleNumber"
+                        [(ngModel)]="personalData.oracleNumber" required/>
+                    <div [hidden]="!(editForm.controls.oracleNumber?.dirty && editForm.controls.oracleNumber?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.oracleNumber?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="employeesocialstatusApp.personalData.jobFunction" for="field_jobFunction">Job Function</label>
+                    <input type="text" class="form-control" name="jobFunction" id="field_jobFunction"
+                        [(ngModel)]="personalData.jobFunction" required/>
+                    <div [hidden]="!(editForm.controls.jobFunction?.dirty && editForm.controls.jobFunction?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.jobFunction?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="employeesocialstatusApp.personalData.appointmentDate" for="field_appointmentDate">Appointment Date</label>
+                    <div class="input-group">
+                        <input id="field_appointmentDate" type="text" class="form-control" name="appointmentDate" ngbDatepicker  #appointmentDateDp="ngbDatepicker" [(ngModel)]="personalData.appointmentDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="appointmentDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="employeesocialstatusApp.personalData.schoolAdministration" for="field_schoolAdministration">School Administration</label>
+                    <input type="text" class="form-control" name="schoolAdministration" id="field_schoolAdministration"
+                        [(ngModel)]="personalData.schoolAdministration" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="employeesocialstatusApp.personalData.gender" for="field_gender">Gender</label>
+                    <input type="text" class="form-control" name="gender" id="field_gender"
+                        [(ngModel)]="personalData.gender" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="employeesocialstatusApp.personalData.sector" for="field_sector">Sector</label>
+                    <input type="text" class="form-control" name="sector" id="field_sector"
+                        [(ngModel)]="personalData.sector" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="employeesocialstatusApp.personalData.socialStatus" for="field_socialStatus">Social Status</label>
+                    <input type="text" class="form-control" name="socialStatus" id="field_socialStatus"
+                        [(ngModel)]="personalData.socialStatus" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="employeesocialstatusApp.personalData.nationality" for="field_nationality">Nationality</label>
+                    <input type="text" class="form-control" name="nationality" id="field_nationality"
+                        [(ngModel)]="personalData.nationality" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="employeesocialstatusApp.personalData.contactNumber" for="field_contactNumber">Contact Number</label>
+                    <input type="text" class="form-control" name="contactNumber" id="field_contactNumber"
+                        [(ngModel)]="personalData.contactNumber" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="employeesocialstatusApp.personalData.createdAt" for="field_createdAt">Created At</label>
+                    <div class="d-flex">
+                        <input id="field_createdAt" type="datetime-local" class="form-control" name="createdAt" [(ngModel)]="createdAt" placeholder="YYYY-MM-DD HH:mm"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="employeesocialstatusApp.personalData.createdBy" for="field_createdBy">Created By</label>
+                    <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                        [(ngModel)]="personalData.createdBy" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="employeesocialstatusApp.personalData.modifiedAt" for="field_modifiedAt">Modified At</label>
+                    <div class="d-flex">
+                        <input id="field_modifiedAt" type="datetime-local" class="form-control" name="modifiedAt" [(ngModel)]="modifiedAt" placeholder="YYYY-MM-DD HH:mm"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="employeesocialstatusApp.personalData.modifiedBy" for="field_modifiedBy">Modified By</label>
+                    <input type="text" class="form-control" name="modifiedBy" id="field_modifiedBy"
+                        [(ngModel)]="personalData.modifiedBy" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="employeesocialstatusApp.personalData.attachmentInfo" for="field_attachmentInfo">Attachment Info</label>
+                    <select class="form-control" id="field_attachmentInfo" name="attachmentInfo" [(ngModel)]="personalData.attachmentInfoId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="attachmentInfoOption.id" *ngFor="let attachmentInfoOption of attachmentinfos; trackBy: trackAttachmentInfoById">{{attachmentInfoOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
