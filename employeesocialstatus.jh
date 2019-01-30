@@ -1,0 +1,61 @@
+entity PersonalData{
+	fullName String required ,
+    oracleNumber String  required ,
+    jobFunction String required,
+    appointmentDate LocalDate,
+    schoolAdministration String,
+    gender String,
+    sector String,
+    socialStatus String,
+    nationality String,
+    contactNumber String,
+    createdAt Instant,
+    createdBy String,
+    modifiedAt Instant,
+    modifiedBy String  
+}
+
+entity DependentInfo{
+	name String  required,
+    marriageDate LocalDate,
+    workingStatus String,
+    employer String,
+    employerType String,
+    hireDate LocalDate,
+    houseAllowanceProvided String,
+    governmentHousing String
+}
+
+
+
+entity AttachmentInfo {
+	marriageCert String,
+    salaryCert String,
+    deathCert String,
+    divorceDoc String,
+    synopsis String    
+}
+
+
+relationship OneToOne {
+    PersonalData{attachmentInfo} to AttachmentInfo
+}
+
+
+relationship ManyToOne {
+    DependentInfo{personalData} to PersonalData
+}
+
+
+
+// Set pagination options
+paginate * with pagination
+
+// Use Data Transfert Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+ angularSuffix * with ess
