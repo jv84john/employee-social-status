@@ -1,0 +1,42 @@
+{
+  "generator-jhipster": {
+    "applicationType": "monolith",
+    "gitCompany": "",
+    "baseName": "employeesocialstatus",
+    "packageName": "gov.moe.employee.socialstatus",
+    "packageFolder": "gov/moe/employee/socialstatus",
+    "serverPort": 9090,
+    "serviceDiscoveryType": "eureka",
+    "authenticationType": "jwt",
+    "uaaBaseName": "../uaa",
+    "cacheProvider": "no",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mssql",
+    "prodDatabaseType": "mssql",
+    "searchEngine": false,
+    "enableSwaggerCodegen": false,
+    "messageBroker": false,
+    "buildTool": "maven",
+    "useSass": false,
+    "clientPackageManager": "npm",
+    "testFrameworks": [],
+    "enableTranslation": true,
+    "nativeLanguage": "ar-ly",
+    "languages": [
+      "en",
+      "ar-ly"
+    ],
+    "clientFramework": "angularX",
+    "jhiPrefix": "jhi",
+    "jhipsterVersion": "5.8.1",
+    "jwtSecretKey": "YTI0ZWM3YTUxYjhhZjc2ZGEyNWY3MTJkMTY1NTgxYTUyMzYyNzY4OWNhNzRmZjYxOTZmNzEzMWJhNDBiMTk0YjBmOTU3ZGMxYTIxOWRiYTljOGYyMzM2OTBmNjYxYjQ5YjVkMDEzMDNkYmE5NjdmMTI0YzhiOTVmZGYwY2Y4NmM=",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": []
+  },
+  "git-provider": "GitHub",
+  "git-company": "jv84john",
+  "repository-name": "employee-social-status"
+}
